@@ -2,6 +2,7 @@ import { Routes, Route, BrowserRouter, Link } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import ProductPage from './pages/ProductPage';
 
+
 function App() {
   return (
     <BrowserRouter>
