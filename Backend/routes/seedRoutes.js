@@ -7,8 +7,8 @@ const seedRouter = express.Router();
 seedRouter.get('/', async (req, res) => {
   await product.deleteMany({});
   const createdProducts = await product.insertMany(data.products);
-
-  res.send({createdProducts});
+  console.log('data inserted ');
+  res.send({ createdProducts });
 });
 
 export default seedRouter;

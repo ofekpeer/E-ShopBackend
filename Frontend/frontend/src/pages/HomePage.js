@@ -3,6 +3,10 @@ import axios from 'axios';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Product from '../Components/Product';
+import { Helmet } from 'react-helmet-async';
+import Loading from './Loading';
+import MessageBox from '../Components/MessageBox';
+import {getError} from '../utils';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -31,7 +35,7 @@ function HomePage() {
         const res = await axios.get('/api/v1/products');
         dispatch({ type: 'GET SUCCSESS', payload: res.data });
       } catch (error) {
-        dispatch({ type: 'GET FAIL', payload: error.massage });
+        dispatch({ type: 'GET FAIL', payload: getError(error) });
       }
     };
 
@@ -40,16 +44,19 @@ function HomePage() {
 
   return (
     <div>
+      <Helmet>
+        <title>amazon</title>
+      </Helmet>
       <h1>Products</h1>
       <div className="products">
         {loading ? (
-          <p> loading...</p>
+          <Loading></Loading>
         ) : error ? (
-          <p>{error}</p>
+          <MessageBox variant="danger">{error}</MessageBox>
         ) : (
           <Row>
             {products.map((product) => (
-              <Col key={product.token} lg={4} md={6} sm={6} className='md-1'>
+              <Col key={product.token} lg={4} md={6} sm={6} className="mb-3">
                 <Product product={product}></Product>
               </Col>
             ))}

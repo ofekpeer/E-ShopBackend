@@ -54,8 +54,7 @@ main {
 
 .product-card {
   transition: box-shadow 0.2s ease-in-out, transition 0.2s ease-in-out;
-  box-shadow: none;
-  transform: scale(1);
+  height: 100%;
 }
 
 .product-card:hover {
@@ -65,4 +64,13 @@ main {
 
 .img-large {
   width: 100%;
+}
+
+.icon {
+  height: 100%;
+  width: 90px;
+}
+
+.img-thumbnail{
+  height: 80px;
 }

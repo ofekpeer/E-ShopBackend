@@ -1,30 +1,57 @@
-import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Rating from './Rating';
+import { useContext } from 'react';
+import { Store } from '../Store';
+import axios from 'axios';
 
-function Product(props) {
-  const { product } = props;
+function Product({ product }) {
+  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const {
+    cart: { cartItems },
+  } = state;
+
+  const addToCartHandler = async () => {
+    const existItem = cartItems.find((x) => x._id === product._id);
+    const quantity = existItem ? existItem.quantity + 1 : 1;
+    const { data } = await axios.get(`/api/v1/products/${product._id}`);
+    if (data.countInStock < quantity) {
+      window.alert('sorry , product is out of stock');
+      return;
+    }
+    ctxDispatch({
+      type: 'ADD TO CART',
+      payload: { ...data, quantity },
+    });
+  };
+
   return (
     <Card className="product-card product">
       <Link to={`/product/${product.token}`}>
         <img
           className="card-img-top"
-          alt={product.name}
+          alt={product.title}
           src={product.image}
         ></img>
       </Link>
       <div className="product-desc">
         <Card.Body>
           <Link to={`/product/${product.token}`}>
-            <Card.Title>{product.name}</Card.Title>
+            <Card.Title>{product.title}</Card.Title>
           </Link>
-          <Rating
-            rating={product.rating}
-            numOfReviews={product.numReviews}
-          ></Rating>
           <Card.Text>{product.price}$</Card.Text>
-          <Button>Add to cart</Button>
+          <Rating
+            rating={product.rating.rate}
+            numOfReviews={product.rating.count}
+          ></Rating>
+          {product.countInStock === 0 ? (
+            <Button disabled variant="light">
+              Out Of Stock
+            </Button>
+          ) : (
+            <Button onClick={addToCartHandler}>Add to cart</Button>
+          )}
         </Card.Body>
       </div>
     </Card>
