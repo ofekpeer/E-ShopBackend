@@ -21,7 +21,6 @@ export default function SigninPage() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { userInfo } = state;
 
@@ -32,11 +31,9 @@ export default function SigninPage() {
         email,
         password,
       });
-      if(data.email){
-        ctxDispatch({ type: 'USER SINGIN', payload: data });
-        localStorage.setItem('userInfo', JSON.stringify(data));
-        navigate(redirect || '/');
-      }
+      ctxDispatch({ type: 'USER SINGIN', payload: data });
+      localStorage.setItem('userInfo', JSON.stringify(data));
+      navigate(redirect || '/');
     } catch (err) {
       alert(getError(err));
       //   toast.error(getError(err));

@@ -44,7 +44,6 @@ function App() {
         <main>
           <Container className='padding-top'>
             <Routes>
-              <Route path="/signin" element={<SigninPage />} />
               <Route path="/product/:token" element={<ProductPage />}></Route>
               <Route path="/cart" element={<CartPage />} />
               <Route path="/" element={<HomePage />} />
