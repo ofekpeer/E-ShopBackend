@@ -12,6 +12,7 @@ productRoutes.get('/token/:token', async (req, res) => {
 
 productRoutes.get('/:_id', async (req, res) => {
   const product = await Product.findById(req.params._id);
+  console.log(req.params._id);
   if (product) {
     res.send(product);
   } else res.status(404).send({ message: `${req.params.token} not found` });

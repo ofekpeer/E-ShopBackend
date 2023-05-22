@@ -13,6 +13,7 @@ export default function CartPage() {
   } = state;
 
   const navigate = useNavigate();
+
   const updateCardHandler = async (item, quantity) => {
     const { data } = await axios.get(`/api/v1/products/${item._id}`);
     if (data.countInStock < quantity) {
