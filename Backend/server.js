@@ -19,8 +19,6 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/v1/products/', productRoutes);
 
-
-
 mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => {
