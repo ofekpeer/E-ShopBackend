@@ -74,3 +74,17 @@ main {
 .img-thumbnail {
   height: 80px;
 }
+
+.small-container {
+  max-width: 600px;
+}
+
+.sticky {
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+}
+
+.padding-top{
+  padding-top: 65px;
+}
