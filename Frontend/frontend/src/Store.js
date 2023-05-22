@@ -30,7 +30,7 @@ const reducer = (state, action) => {
         cart: {
           ...state.cart,
           cartItems,
-        },
+        },  
       };
     }
     case 'REMOVE FROM CART': {

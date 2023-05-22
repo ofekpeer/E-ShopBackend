@@ -8,6 +8,7 @@ import { Badge, Nav } from 'react-bootstrap';
 import { useContext } from 'react';
 import { Store } from './Store';
 import CartPage from './pages/CartPage';
+import SigninPage from './pages/SigninPage';
 
 function App() {
   const { state } = useContext(Store);
@@ -16,7 +17,7 @@ function App() {
     <BrowserRouter>
       <div className="d-flex flex-column side-allpage">
         <header>
-          <NavBar bg="dark" variant="dark">
+          <NavBar className="sticky" bg="dark" variant="dark">
             <Container>
               <LinkContainer to="/">
                 <NavBar.Brand>
@@ -41,12 +42,12 @@ function App() {
           </NavBar>
         </header>
         <main>
-          <Container>
+          <Container className='padding-top'>
             <Routes>
+              <Route path="/signin" element={<SigninPage />} />
               <Route path="/product/:token" element={<ProductPage />}></Route>
               <Route path="/cart" element={<CartPage />} />
               <Route path="/" element={<HomePage />} />
-
             </Routes>
           </Container>
         </main>

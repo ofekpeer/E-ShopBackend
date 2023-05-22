@@ -1,10 +1,12 @@
-import express from 'express';
+import express, { urlencoded } from 'express';
 import data from './data.js';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import Product from './models/productModel.js';
 import seedRouter from './routes/seedRoutes.js';
+import productRoutes from './routes/productRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 
 dotenv.config();
 
@@ -13,28 +15,15 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-//app.use('/api/v1/product/seed', seedRouter);
+app.use('/api/v1/product/seed', seedRouter);
 
-app.get('/api/v1/product/token/:token', async (req, res) => {
-  const products = await Product.find();
-  const product = products.find((i) => i.token === req.params.token);
-  if (product) {
-    res.send(product);
-  } else res.status(404).send({ message: `${req.params.token} not found` });
-});
+app.use('/api/v1/products', productRoutes);
+app.use('/api/v1/users', userRoutes);
 
-app.get('/api/v1/products/:_id', async (req, res) => {
-  const products = await Product.find();
-  const product = products.find((i) => i._id == req.params._id);
-  if (product) {
-    res.send(product);
-  } else res.status(404).send({ message: `${req.params.token} not found` });
-});
-
-app.get('/api/v1/products', async (req, res) => {
-  const products = await Product.find();
-  res.send(products);
+app.use((err, req, res, next) => {
+  res.status(500).send({ message: err.message });
 });
 
 mongoose
