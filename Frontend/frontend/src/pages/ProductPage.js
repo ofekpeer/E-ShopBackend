@@ -62,8 +62,9 @@ function ProductPage() {
     const getProduct = async () => {
       dispatch({ type: 'GET_REQUEST' });
       try {
-        const res = await axios.get(`/api/v1/product/token/${token}`); //try catch
+        const res = await axios.get(`/api/v1/products/token/${token}`); //try catch
         dispatch({ type: 'GET_SUCCESS', payload: res.data });
+        console.log(res);
       } catch (err) {
         dispatch({ type: 'GET_FAIL', payload: getError(err) });
       }

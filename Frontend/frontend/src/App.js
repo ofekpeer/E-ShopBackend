@@ -8,6 +8,7 @@ import { Badge, Nav } from 'react-bootstrap';
 import { useContext } from 'react';
 import { Store } from './Store';
 import CartPage from './pages/CartPage';
+import SigninPage from './pages/SigninPage';
 
 function App() {
   const { state } = useContext(Store);
@@ -43,6 +44,7 @@ function App() {
         <main>
           <Container>
             <Routes>
+            <Route path="/signin" element={<SigninPage />} />
               <Route path="/product/:token" element={<ProductPage />}></Route>
               <Route path="/cart" element={<CartPage />} />
               <Route path="/" element={<HomePage />} />
