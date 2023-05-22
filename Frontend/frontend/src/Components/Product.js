@@ -2,7 +2,7 @@ import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Rating from './Rating';
-import { useContext } from 'react';
+import { useContext, useRef } from 'react';
 import { Store } from '../Store';
 import axios from 'axios';
 
@@ -11,6 +11,15 @@ function Product({ product }) {
   const {
     cart: { cartItems },
   } = state;
+
+  const dragStart = (e) => {
+    e.dataTransfer.setData('product', product._id);
+  };
+
+  const allowDrop = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
 
   const addToCartHandler = async () => {
     const existItem = cartItems.find((x) => x._id === product._id);
@@ -30,6 +39,9 @@ function Product({ product }) {
     <Card className="product-card product">
       <Link to={`/product/${product.token}`}>
         <img
+          onDragOver={(e) => allowDrop(e)}
+          onDragStart={(e) => dragStart(e)}
+          draggable
           className="card-img-top"
           alt={product.title}
           src={product.image}

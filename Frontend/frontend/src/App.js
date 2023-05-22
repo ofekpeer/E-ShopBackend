@@ -1,18 +1,19 @@
-import { Routes, Route, BrowserRouter, Link } from 'react-router-dom';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import ProductPage from './pages/ProductPage';
 import NavBar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import LinkContainer from 'react-router-bootstrap/LinkContainer';
-import { Badge, Nav } from 'react-bootstrap';
+import { Nav } from 'react-bootstrap';
 import { useContext } from 'react';
 import { Store } from './Store';
 import CartPage from './pages/CartPage';
-import SigninPage from './pages/SigninPage';
+import CartIcon from './Components/CartIcon';
 
 function App() {
   const { state } = useContext(Store);
   const { cart } = state;
+
   return (
     <BrowserRouter>
       <div className="d-flex flex-column side-allpage">
@@ -29,20 +30,13 @@ function App() {
                 </NavBar.Brand>
               </LinkContainer>
               <Nav className="ms-auto w-50 justify-content-end">
-                <Link to="/cart" className="nav-link">
-                  <i className="fas fa-shopping-cart"></i>
-                  {cart.cartItems.length > 0 && (
-                    <Badge pill bg="danger">
-                      {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
-                    </Badge>
-                  )}
-                </Link>
+                <CartIcon cart={cart}></CartIcon>
               </Nav>
             </Container>
           </NavBar>
         </header>
         <main>
-          <Container className='padding-top'>
+          <Container className="padding-top">
             <Routes>
               <Route path="/product/:token" element={<ProductPage />}></Route>
               <Route path="/cart" element={<CartPage />} />

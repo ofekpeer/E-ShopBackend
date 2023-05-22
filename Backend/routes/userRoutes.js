@@ -3,7 +3,7 @@ import Product from '../models/productModel.js';
 import User from '../models/UserModel.js';
 import expressAsyncHandler from 'express-async-handler';
 import { generateToken } from '../utils.js';
-import bcrypt from 'bcryptjs'
+import bcrypt from 'bcryptjs';
 
 const userRoutes = express.Router();
 
