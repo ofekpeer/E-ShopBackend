@@ -17,7 +17,7 @@ function App() {
     <BrowserRouter>
       <div className="d-flex flex-column side-allpage">
         <header>
-          <NavBar bg="dark" variant="dark">
+          <NavBar className="sticky" bg="dark" variant="dark">
             <Container>
               <LinkContainer to="/">
                 <NavBar.Brand>
@@ -42,13 +42,11 @@ function App() {
           </NavBar>
         </header>
         <main>
-          <Container>
+          <Container className='padding-top'>
             <Routes>
-            <Route path="/signin" element={<SigninPage />} />
               <Route path="/product/:token" element={<ProductPage />}></Route>
               <Route path="/cart" element={<CartPage />} />
               <Route path="/" element={<HomePage />} />
-
             </Routes>
           </Container>
         </main>
