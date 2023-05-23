@@ -2,9 +2,10 @@ import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Rating from './Rating';
-import { useContext, useRef } from 'react';
+import { useContext } from 'react';
 import { Store } from '../Store';
 import axios from 'axios';
+import {beautifulTitel} from '../utils'
 
 function Product({ product }) {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -37,26 +38,28 @@ function Product({ product }) {
 
   return (
     <Card className="product-card product">
-      <Link to={`/product/${product.token}`}>
-        <img
-          onDragOver={(e) => allowDrop(e)}
-          onDragStart={(e) => dragStart(e)}
-          draggable
-          className="card-img-top"
-          alt={product.title}
-          src={product.image}
-        ></img>
-      </Link>
-      <div className="product-desc">
-        <Card.Body>
+      <div className='center-img'>
+        <Link to={`/product/${product.token}`}>
+          <img
+            onDragOver={(e) => allowDrop(e)}
+            onDragStart={(e) => dragStart(e)}
+            draggable
+            className="card-img-top"
+            alt={product.title}
+            src={product.image}
+          ></img>
+        </Link>
+      </div>
+      <div className="product-desc lg-bottom">
+        <Card.Body className='ofek'>
           <Link to={`/product/${product.token}`}>
-            <Card.Title>{product.title}</Card.Title>
+            <h6>{beautifulTitel(product.title)}</h6>
           </Link>
-          <Card.Text>{product.price}$</Card.Text>
           <Rating
             rating={product.rating.rate}
             numOfReviews={product.rating.count}
           ></Rating>
+          <Card.Text>{product.price}$</Card.Text>
           {product.countInStock === 0 ? (
             <Button disabled variant="light">
               Out Of Stock

@@ -6,7 +6,7 @@ import Product from '../Components/Product';
 import { Helmet } from 'react-helmet-async';
 import Loading from './Loading';
 import MessageBox from '../Components/MessageBox';
-import {getError} from '../utils';
+import { getError } from '../utils';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -54,9 +54,9 @@ function HomePage() {
         ) : error ? (
           <MessageBox variant="danger">{error}</MessageBox>
         ) : (
-          <Row>
+          <Row className='center'>
             {products.map((product) => (
-              <Col key={product.token} lg={4} md={6} sm={6} className="mb-3">
+              <Col key={product.token} xl={3} lg={3} md={4} sm={6} xs={6} className="mb-3 savesize">
                 <Product product={product}></Product>
               </Col>
             ))}

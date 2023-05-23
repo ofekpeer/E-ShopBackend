@@ -56,7 +56,7 @@ function Rating({ rating, numOfReviews }) {
           }
         ></i>
       </span>
-      <span>{numOfReviews} Reviews</span>
+      <span className="pad">{numOfReviews} Reviews</span>
     </div>
   );
 }

@@ -4,8 +4,7 @@ import { Badge } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Store } from '../Store';
 
-export default function CartIcon({ cart }) {
-
+export default function CartIcon() {
   const dragEnter = (e) => {
     e.preventDefault();
     const a = e.dataTransfer.getData('product');
@@ -43,9 +42,9 @@ export default function CartIcon({ cart }) {
         onDragOver={(event) => allowDrop(event)}
         onDrop={(e) => dragEnter(e)}
       ></i>
-      {cart.cartItems.length > 0 && (
+      {cartItems.length > 0 && (
         <Badge pill bg="danger">
-          {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+          {cartItems.reduce((a, c) => a + c.quantity, 0)}
         </Badge>
       )}
     </Link>

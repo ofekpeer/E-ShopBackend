@@ -19,15 +19,18 @@ main {
 
 .product {
   border: 1px solid;
-  margin: 1rem;
+  margin: 1px;
+  /* width: 250px; */
 }
 
 .product img {
   height: 200px;
+  max-width: 190px;
 }
 
 .product-desc {
   padding: 1rem;
+  justify-content: end;
 }
 
 .side-allpage {
@@ -53,8 +56,8 @@ main {
 }
 
 .product-card {
-  transition: box-shadow 0.2s ease-in-out, transition 0.2s ease-in-out;
-  height: 100%;
+  transition: box-shadow 0.1s ease-in-out, transition 0.2s ease-in-out;
+  max-width: 260px;
 }
 
 .product-card:hover {
@@ -87,4 +90,36 @@ main {
 
 .padding-top {
   padding-top: 65px;
+}
+
+footer {
+  border-top: 1px solid black;
+}
+
+footer * {
+  justify-content: center;
+}
+
+.dark {
+  background-color: #212529;
+  color: azure;
+}
+
+footer a {
+  color: rgb(167, 167, 167);
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: rgb(197, 197, 197);
+}
+
+.center {
+  justify-content: center;
+}
+
+.ofek{padding: 0px;}
+
+.center-img{
+  text-align: center;
 }

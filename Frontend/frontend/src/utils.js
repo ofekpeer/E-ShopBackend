@@ -5,3 +5,10 @@ export const getError = (error) => {
 };
 
  
+export const beautifulTitel = (title) => {
+  if (title.length < 15) {
+    return title;
+  }
+  title = title.slice(0, 15);
+  return title + '...';
+};
