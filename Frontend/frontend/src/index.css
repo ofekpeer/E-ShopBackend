@@ -20,7 +20,6 @@ main {
 .product {
   border: 1px solid;
   margin: 1px;
-  /* width: 250px; */
 }
 
 .product img {
@@ -118,8 +117,19 @@ footer a:hover {
   justify-content: center;
 }
 
-.ofek{padding: 0px;}
+.ofek {
+  padding: 0px;
+}
 
-.center-img{
+.center-img {
   text-align: center;
+}
+
+.checkout-steps > div {
+  border-bottom: 0.2rem solid #a0a0a0;
+  color: #a0a0a0;
+}
+.checkout-steps > div.active {
+  border-bottom: 0.2rem solid #f08000;
+  color: #f08000;
 }

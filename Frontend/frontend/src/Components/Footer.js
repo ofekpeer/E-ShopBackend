@@ -47,7 +47,7 @@ export default function Footer() {
             </Col>
           </Row>
           <Row className="text-center pt-2" md={12}>
-            all right reserved®
+            all right reserved® 2023
           </Row>
         </Container>
       </footer>

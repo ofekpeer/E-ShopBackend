@@ -5,8 +5,7 @@ import { Button, Card, Col, ListGroup, Row } from 'react-bootstrap';
 import MessageBox from '../Components/MessageBox';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import {beautifulTitel} from '../utils'
-
+import { beautifulTitel } from '../utils';
 
 export default function CartPage() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -62,7 +61,9 @@ export default function CartPage() {
                         src={item.image}
                         alt={item.title}
                       ></img>{' '}
-                      <Link to={`/product/${item.token}`}>{beautifulTitel(item.title)}</Link>
+                      <Link to={`/product/${item.token}`}>
+                        {beautifulTitel(item.title)}
+                      </Link>
                     </Col>
                     <Col md={3}>
                       <Button
@@ -83,7 +84,7 @@ export default function CartPage() {
                         disabled={item.countInStock === item.quantity}
                       >
                         <i className="fas fa-plus-circle"></i>
-                      </Button>{' '}
+                      </Button>
                     </Col>
                     <Col md={3}>{item.price}</Col>
                     <Col md={2}>

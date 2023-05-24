@@ -21,9 +21,28 @@ userRoutes.post(
         });
         return;
       }
-      res.send('the password is wrong');
+      res.status(401).send({ message: 'Invalid password/user' });
+      return;
     }
     res.status(401).send({ message: 'Invalid password/user' });
+  })
+);
+
+userRoutes.post(
+  '/signup',
+  expressAsyncHandler(async (req, res) => {
+    const newUser =  new User({
+      name: req.body.name,
+      email: req.body.email,
+      password: bcrypt.hashSync(req.body.password),
+    });
+    const user = await newUser.save();
+    res.send({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      token: generateToken(user),
+    });
   })
 );
 
