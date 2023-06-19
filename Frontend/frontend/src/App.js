@@ -11,8 +11,12 @@ import 'react-toastify/dist/ReactToastify.css'
 import ShippingAddresPage from './pages/ShippingAddresPage';
 import SignupPage from './pages/SignupPage';
 import PaymentPage from './pages/PaymentPage';
+import SubmitOrderPage from './pages/SubmitOrderPage';
+import OrderPage from './pages/OrderPage';
+import SearchPage from './pages/SearchPage';
 
 function App() {
+  
   return (
     <BrowserRouter>
       <div className="d-flex flex-column side-allpage">
@@ -27,7 +31,11 @@ function App() {
               <Route path="/signin" element={<SigninPage />} />
               <Route path="/shipping" element={<ShippingAddresPage />} />
               <Route path="/signup" element={<SignupPage />} />
+              <Route path="/placeorder" element={<SubmitOrderPage />} />
               <Route path="/payment" element={<PaymentPage />} />
+              <Route path="/order/:id" element={<OrderPage />} />
+              <Route path="/search" element={<SearchPage />} />
+
             </Routes>
           </Container>
         </main>

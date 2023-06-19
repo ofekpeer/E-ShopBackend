@@ -9,18 +9,18 @@ export default function PaymentPage() {
   const navigate = useNavigate();
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const {
-    cart: { shippingAddress, paymentMethod },
+    cart: { shippingAddress },
   } = state;
 
-  const [paymentMethodName, setPaymentMethod] = useState(
-    paymentMethod || 'PayPal'
+  const [paymentMethodName, setPaymentMethodName] = useState(
+   'PayPal'
   );
 
   const submitHandler = (e) => {
     e.preventDefault();
-    ctxDispatch({ type: 'SAVE PAYMENT METHOD', payload: paymentMethod });
-    localStorage.setItem('paymentMethod', paymentMethod);
-    navigate('/placeorder')
+    ctxDispatch({ type: 'SAVE PAYMENT METHOD', payload: paymentMethodName });
+    localStorage.setItem('paymentMethod', JSON.stringify(paymentMethodName));
+    navigate('/placeorder');
   };
 
   useEffect(() => {
@@ -45,7 +45,7 @@ export default function PaymentPage() {
               label="PayPal"
               value="PayPal"
               checked={paymentMethodName === 'PayPal'}
-              onChange={(e) => setPaymentMethod(e.target.value)}
+              onChange={(e) => setPaymentMethodName(e.target.value)}
             />
           </div>
           <div className="mb-3">
@@ -55,7 +55,7 @@ export default function PaymentPage() {
               label="Stripe"
               value="Stripe"
               checked={paymentMethodName === 'Stripe'}
-              onChange={(e) => setPaymentMethod(e.target.value)}
+              onChange={(e) => setPaymentMethodName(e.target.value)}
             />
           </div>
           <div className="mb-3">

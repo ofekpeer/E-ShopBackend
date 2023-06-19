@@ -23,8 +23,6 @@ const reducer = (state, action) => {
   switch (action.type) {
     case 'ADD TO CART': {
       let newItem = action.payload;
-      // const countInStock = newItem.countInStock - 1;
-      // newItem = { ...newItem, countInStock: countInStock };
       const existItem = state.cart.cartItems.find(
         (item) => item._id === newItem._id
       );
@@ -41,6 +39,9 @@ const reducer = (state, action) => {
           cartItems,
         },
       };
+    }
+    case 'CLEAR THE CART': {
+      return { ...state, cart: { ...state.cart, cartItems: [] } };
     }
     case 'REMOVE FROM CART': {
       const cartItems = state.cart.cartItems.filter(

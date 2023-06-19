@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Product from '../Components/Product';
 import { Helmet } from 'react-helmet-async';
-import Loading from './Loading';
+import Loading from '../Components/Loading';
 import MessageBox from '../Components/MessageBox';
 import { getError } from '../utils';
 

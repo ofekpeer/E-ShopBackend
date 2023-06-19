@@ -5,7 +5,6 @@ import Rating from './Rating';
 import { useContext } from 'react';
 import { Store } from '../Store';
 import axios from 'axios';
-import {beautifulTitel} from '../utils'
 
 function Product({ product }) {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -53,7 +52,7 @@ function Product({ product }) {
       <div className="product-desc lg-bottom">
         <Card.Body className='ofek'>
           <Link to={`/product/${product.token}`}>
-            <h6>{beautifulTitel(product.title)}</h6>
+            <h6 className='oneline'>{product.title}</h6>
           </Link>
           <Rating
             rating={product.rating.rate}

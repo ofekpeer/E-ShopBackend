@@ -133,3 +133,19 @@ footer a:hover {
   border-bottom: 0.2rem solid #f08000;
   color: #f08000;
 }
+
+.oneline {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.highlight-current-page {
+  background-color: #f0c040 !important;
+  color: #000000 !important;
+}
+
+.text-bold {
+  font-weight: bold;
+}

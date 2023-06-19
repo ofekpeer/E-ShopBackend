@@ -6,6 +6,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { Store } from '../Store';
 import axios from 'axios';
+import SearchBox from './SearchBox';
 
 export default function NavBarComponent() {
   const navigate = useNavigate();
@@ -75,6 +76,7 @@ export default function NavBarComponent() {
               />
             </NavBar.Brand>
           </LinkContainer>
+          <SearchBox/>
           <Nav className="ms-auto w-50 justify-content-end">
             <Link to="/cart" className="nav-link">
               <i

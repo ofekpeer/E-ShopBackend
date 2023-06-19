@@ -10,7 +10,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Badge from 'react-bootstrap/Badge';
 import { Helmet } from 'react-helmet-async';
-import Loading from './Loading';
+import Loading from '../Components/Loading';
 import MessageBox from '../Components/MessageBox';
 import { getError } from '../utils';
 import { Store } from '../Store';
